@@ -3,39 +3,32 @@ requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "repo-name"
+name = "pyrelease-cli"
 dynamic = ["version"]
-description = "XXX"
+description = "A simple CLI tool for building and publishing Python packages."
 readme = "README.md"
 license-files = ["LICENSE"]
 authors = [
     {name = "Zhen Tian", email = "zhen.tian.cs@gmail.com"}
 ]
-requires-python = ""
+requires-python = ">=3.8"
+
 dependencies = [
-
+    "build",
+    "twine",
 ]
 
-[project.optional-dependencies]
-dev = [
-    "pytest",
-    "pytest-cov",
-]
+[project.scripts]
+pypublish = "pyrelease.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/user_name/repo-name.git"
-Repository = "https://github.com/user_name/repo-name.git"
-Issues = "https://github.com/user_name/repo-name.git/issues"
+Homepage = "https://github.com/tinchen777/pyrelease-cli.git"
+Repository = "https://github.com/tinchen777/pyrelease-cli.git"
+Issues = "https://github.com/tinchen777/pyrelease-cli.git/issues"
 
 [tool.setuptools.dynamic]
-version = {attr = "repo_name.__version__"}
+version = {attr = "pyrelease.__version__"}
 
 [tool.setuptools.packages.find]
 where = ["src"]
-include = ["repo_name*"]
-
-[tool.setuptools.package-data]
-repo_name = [
-    "draw/fonts/*.ttf",
-    "draw/fonts/*.TTF"
-]
+include = ["pyrelease*"]

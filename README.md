@@ -1,30 +1,23 @@
 <div align="center">
 
-<h2 id="title">🐱‍🐉 repo-name 🐱‍🐉</h2>
+<h2 id="title">
+🐱‍👓 pyrelease-cli 🐱‍👓<br>
+<sub>Automate Your Python Package Release Workflow</sub>
+</h2>
 
+[![PyPI version](https://img.shields.io/pypi/v/pyrelease-cli.svg)](https://pypi.org/project/pyrelease-cli/)
+![Python](https://img.shields.io/pypi/pyversions/pyrelease-cli?color=brightgreen)
+![License](https://img.shields.io/github/license/tinchen777/pyrelease-cli.svg)
 
-[![PyPI version](https://img.shields.io/pypi/v/repo-name.svg)](https://pypi.org/project/repo-name/)
-![Python](https://img.shields.io/pypi/pyversions/repo-name?color=brightgreen)
-[![codecov](https://codecov.io/gh/user_name/repo-name/branch/main/graph/badge.svg)](https://codecov.io/gh/user_name/repo-name)
-![License](https://img.shields.io/github/license/user_name/repo-name.svg)
-
-[![Tests](https://github.com/user_name/repo-name/actions/workflows/test.yml/badge.svg)](https://github.com/user_name/repo-name/actions/workflows/test.yml)
-![Github stars](https://img.shields.io/github/stars/user_name/repo-name.svg)
+![Github stars](https://img.shields.io/github/stars/tinchen777/pyrelease-cli.svg)
 
 </div>
 
 ## About
 
-XXX
+`pyrelease-cli` is a simple CLI tool for building and publishing Python packages.
 
-- Python: ?.?+
-- Runtime deps: XX (>=?,<?)
-
-## Features
-
-- 🚀 XXX
-- 🚀 XXX
-- 🚀 XXX
+- Python: 3.8+
 
 ## Installation
 
@@ -33,23 +26,75 @@ XXX
 This installs the core package with minimal dependencies.
 
 ```bash
-pip install repo-name
-```
-
-### Install with Optional Dependencies
-
-XXX support.
-
-```bash
-pip install repo-name[XXX]
+pip install pyrelease-cli
 ```
 
 ## Quick Start
 
+Before using it, make sure your project contains a valid `pyproject.toml` and that you have configured your PyPI credentials.
+
+### Publish a package
+
+```bash
+pyrelease
+```
+
+This command will:
+
+1. Create the `history/` directory if it does not exist.
+2. Move existing files in `dist/` to `history/`.
+3. Remove build cache (`*.egg-info/`).
+4. Build the package using: `python -m build`
+5. Upload all generated distributions to PyPI using: `python -m twine upload dist/*`
+
+---
+
+### Build only
+
+Build the package without uploading it.
+
+```bash
+pyrelease --build-only
+```
+
+This will:
+
+* Clean previous build artifacts.
+* Build the package.
+* Keep the generated files in `dist/`.
+
+---
+
+### Upload only
+
+Upload existing distribution files in `dist/`.
+
+```bash
+pyrelease --upload-only
+```
+
+This is useful when a previous upload failed and you do not want to rebuild the package.
+
+---
+
+### Clean build artifacts
+
+Remove build cache and archive old distributions without building or uploading.
+
+```bash
+pyrelease --clean
+```
+
+---
+
+
 ## Requirements
 
-- Python >= ??
-- `XXX` >= ?, < ?
+- Python >= 3.8
+- `build`
+- `twine`
+- A valid `pyproject.toml`
+- PyPI credentials configured for `twine`
 
 ## License
 
@@ -57,5 +102,5 @@ See LICENSE in the repository.
 
 ## Links
 
-- [Homepage/Repo](https://github.com/user_name/repo-name.git)
-- [Issues](https://github.com/user_name/repo-name.git/issues)
+- [Homepage/Repo](https://github.com/tinchen777/pyrelease-cli.git)
+- [Issues](https://github.com/tinchen777/pyrelease-cli.git/issues)
