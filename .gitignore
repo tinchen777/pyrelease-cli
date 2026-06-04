@@ -214,6 +214,8 @@ __marimo__/
 draft.py
 test.py
 
+.draft/
+
 # Locally
 
 pypi_upload.sh

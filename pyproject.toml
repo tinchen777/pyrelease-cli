@@ -19,7 +19,7 @@ dependencies = [
 ]
 
 [project.scripts]
-pypublish = "pyrelease.cli:main"
+pyrelease = "pyrelease.cli:main"
 
 [project.urls]
 Homepage = "https://github.com/tinchen777/pyrelease-cli.git"

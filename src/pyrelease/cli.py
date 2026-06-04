@@ -11,7 +11,7 @@ import sys
 
 
 def clean():
-    """Backup old distributions and remove build cache."""
+    """Backup old distributions."""
 
     print("==> Cleaning")
 
@@ -28,8 +28,8 @@ def clean():
     # shutil.rmtree("build", ignore_errors=True)
 
     # # remove egg-info
-    for d in glob.glob("*.egg-info"):
-        shutil.rmtree(d, ignore_errors=True)
+    # for d in glob.glob("*.egg-info"):
+    #     shutil.rmtree(d, ignore_errors=True)
 
 
 def build():
@@ -53,10 +53,14 @@ def upload():
     if not files:
         raise RuntimeError("No distribution files found.")
 
-    subprocess.run(
-        [sys.executable, "-m", "twine", "upload", *files],
-        check=True,
-    )
+    try:
+        subprocess.run(
+            [sys.executable, "-m", "twine", "upload", *files],
+            check=True,
+        )
+    except subprocess.CalledProcessError as e:
+        print(f"Error uploading: {e}")
+        sys.exit(1)
 
 
 def parse_args():

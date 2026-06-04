@@ -23,10 +23,10 @@
 
 ### Install from PyPI
 
-This installs the core package with minimal dependencies.
-
 ```bash
-pip install pyrelease-cli
+pip install pipx
+pipx ensurepath
+pipx install pyrelease-cli
 ```
 
 ## Quick Start
@@ -59,9 +59,9 @@ pyrelease --build-only
 
 This will:
 
-* Clean previous build artifacts.
-* Build the package.
-* Keep the generated files in `dist/`.
+- Clean previous build artifacts.
+- Build the package.
+- Keep the generated files in `dist/`.
 
 ---
 
@@ -79,14 +79,13 @@ This is useful when a previous upload failed and you do not want to rebuild the 
 
 ### Clean build artifacts
 
-Remove build cache and archive old distributions without building or uploading.
+Archive old distributions without building or uploading.
 
 ```bash
 pyrelease --clean
 ```
 
 ---
-
 
 ## Requirements
 
