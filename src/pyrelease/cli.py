@@ -9,6 +9,8 @@ import shutil
 import subprocess
 import sys
 
+from . import __version__
+
 
 def clean():
     """Backup old distributions."""
@@ -67,6 +69,12 @@ def parse_args():
     parser = argparse.ArgumentParser(
         prog="pyrelease",
         description="Build and publish Python packages.",
+    )
+
+    parser.add_argument(
+        "--version", "-v",
+        action="version",
+        version=f"%(prog)s {__version__}"
     )
 
     parser.add_argument(

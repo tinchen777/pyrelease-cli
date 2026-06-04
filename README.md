@@ -21,11 +21,17 @@
 
 ## Installation
 
-### Install from PyPI
+### Install with pipx
+
+`pipx` installs the application in an isolated environment while making
+the command globally available.
 
 ```bash
 pip install pipx
 pipx ensurepath
+```
+
+```bash
 pipx install pyrelease-cli
 ```
 
